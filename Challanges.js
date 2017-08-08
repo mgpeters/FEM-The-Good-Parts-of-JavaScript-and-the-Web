@@ -49,5 +49,29 @@ var addf = liftf(add);
 addf(3)(4);
 liftf(mul)(3)(4);
 
+// Function Challanges 2
+
+// Write a function curry that takes a binary function
+// and an argument, and returns a function that can take a 
+// second argument:
+
+function curry (fun, x){
+	return function second(y){
+		return fun(x, y);
+	};
+}
+var add3 = curry(add, 3);
+add3(4);
+
+curry(mul, 5)(6);
+
+
+
+
+
+
+
+
+
 
 
