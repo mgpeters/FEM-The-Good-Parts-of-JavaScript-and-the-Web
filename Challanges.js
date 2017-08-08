@@ -34,3 +34,20 @@ function addf(x){
 	};
 }
 addf(3)(4);
+
+// Write a function liftf which takes a binary function, and
+// makes it callable with two invocations.
+
+function liftf(binaryFunction){
+	return function (x){
+		return function(y){
+			return binaryFunction(x, y)
+		};
+	}
+}
+var addf = liftf(add);
+addf(3)(4);
+liftf(mul)(3)(4);
+
+
+
