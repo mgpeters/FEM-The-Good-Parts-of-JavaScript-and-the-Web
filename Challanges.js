@@ -25,3 +25,12 @@ function identityf(arg){
 }
 var three = identityf(3);
 three();
+
+// Write a function addf that adds from two invocations:
+
+function addf(x){
+	return function(y){
+		return x + y;
+	};
+}
+addf(3)(4);
