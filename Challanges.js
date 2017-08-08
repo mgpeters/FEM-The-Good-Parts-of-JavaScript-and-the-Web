@@ -14,3 +14,14 @@ function mul(x, y){
 add(3, 4);
 sub(3, 4);
 mul(3, 4);
+
+// Write a function identityf that takes an argument and returns
+// a function that returns that argument:
+
+function identityf(arg){
+	return function(){
+		return arg;
+	};
+}
+var three = identityf(3);
+three();
