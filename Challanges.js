@@ -71,11 +71,19 @@ curry(mul, 5)(6);
 // inc(5); 			// 6
 // inc(inc(5));		// 7
 
-var inc = addf(1);
+var inc1 = addf(1);
+var inc2 = liftf(add)(1);
+var inc3 = curry(add, 1);
 
+// Write a function twice that takes a binary function
+// and returns a unary function that passes it's argument
+// to the binary function twice:
 
-
-
+function twice(binaryFunction){
+	return function(first){
+		return binaryFunction(first, first);
+	};
+}
 
 
 
