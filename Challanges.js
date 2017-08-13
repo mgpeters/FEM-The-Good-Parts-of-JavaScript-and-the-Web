@@ -102,10 +102,27 @@ bus(3, 2)
 // and returns a unary function that calls them both:
 
 function composeu (firstUnary, secondUnary){
-	return function (first){
-		return secondUnary(firstUnary(first));
+	return function (arg){
+		return secondUnary(firstUnary(arg));
 	};
 }
 composeu(doubl, square)(5);
+
+// Write a function composeb that takes two binary functions
+// and returns a function that calls them both:
+
+function composeb(firstBinary, secondBinary){
+	return function (first, second, third){
+		return secondBinary(firstBinary(first, second), third)
+	};
+}
+
+composeb(add, mul)(2, 3, 7); 	// 35
+
+
+
+
+
+
 
 
