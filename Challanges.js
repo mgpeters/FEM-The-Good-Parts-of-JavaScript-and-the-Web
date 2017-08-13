@@ -85,7 +85,16 @@ function twice(binaryFunction){
 	};
 }
 
+// Write reverse, a function which reverses the arguments of
+// a binary function
 
+function reverse(binaryFunction){
+	return function(x, y){
+		return binaryFunction(y, x);
+	};
+}
+var bus = reverse(sub);
+bus(3, 2)
 
 
 
