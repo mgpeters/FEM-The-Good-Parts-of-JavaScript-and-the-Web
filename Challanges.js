@@ -151,4 +151,22 @@ index();
 index();
 index();
 
+// Write a to function that takes a generator and an end
+// value, and returns a generator that will produce numbers 
+// up to that limit:
+
+function to(generator, endVal){
+	return function(start){
+		if (next < endVal){
+			var next = start;
+			start += 1;
+			return generator();
+		}
+	}
+	return undefined;
+}
+var index = to(from(0), 3);
+index();
+index();
+index();
 
