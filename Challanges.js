@@ -68,8 +68,11 @@ curry(mul, 5)(6);
 // Without writing any new functions, show three ways to create
 // the inc function:
 // var inc = _ _ _;
-// inc(5);
-// inc(inc(5));
+// inc(5); 			// 6
+// inc(inc(5));		// 7
+
+var inc = addf(1);
+
 
 
 
