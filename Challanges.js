@@ -119,10 +119,21 @@ function composeb(firstBinary, secondBinary){
 
 composeb(add, mul)(2, 3, 7); 	// 35
 
+// Write a limit function that allows a binary function to
+// be called a limited amount of times.
 
-
-
-
+function limit(binaryFunction, limit){
+	var round = 0;
+	return function (first, second){
+		if (round < limit){
+			round += 1;
+			return binaryFunction(first, second);
+		};
+	}
+	return undefined;
+}
+var add_ltd = limit(add, 1);
+add_ltd(3, 4);
 
 
 
