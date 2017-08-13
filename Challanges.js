@@ -84,6 +84,8 @@ function twice(binaryFunction){
 		return binaryFunction(first, first);
 	};
 }
+var doubl = twice(add);
+var square = twice(mul);
 
 // Write reverse, a function which reverses the arguments of
 // a binary function
@@ -96,7 +98,14 @@ function reverse(binaryFunction){
 var bus = reverse(sub);
 bus(3, 2)
 
+// Write a function composeu, that takes two unary functions
+// and returns a unary function that calls them both:
 
-
+function composeu (firstUnary, secondUnary){
+	return function (first){
+		return secondUnary(firstUnary(first));
+	};
+}
+composeu(doubl, square)(5);
 
 
