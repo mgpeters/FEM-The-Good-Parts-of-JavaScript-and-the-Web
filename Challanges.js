@@ -133,7 +133,22 @@ function limit(binaryFunction, limit){
 	return undefined;
 }
 var add_ltd = limit(add, 1);
-add_ltd(3, 4);
+add_ltd(3, 4);	// 7
+add_ltd(3, 4);	// undefined
 
+// Write a from function that produces a generator 
+// that will produce a series of values:
+
+function from(start){
+	return function(){
+		var next = start;
+		start += 1;
+		return next;
+	};
+}
+var index = from(0);
+index();
+index();
+index();
 
 
