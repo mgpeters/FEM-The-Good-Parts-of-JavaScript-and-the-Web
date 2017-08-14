@@ -163,3 +163,29 @@ index();
 index();
 index();
 
+/* Teachers Solution:
+	function to(gen, end){
+		return function (){
+			var value = gen();
+			if (value < end){
+			}
+			return undefined;
+		};
+	}
+*/
+
+// Write a fromTo function that produces a generator that
+// will produce values in a range:
+
+function fromTo(begin, end){
+	return to(from(begin), end);
+	}
+}
+
+var index = fromTo(1, 3);
+console.log(index());
+console.log(index());
+console.log(index());
+
+
+
