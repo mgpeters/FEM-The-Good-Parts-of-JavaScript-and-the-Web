@@ -206,8 +206,45 @@ console.log(ele());
 console.log(ele());
 console.log(ele());
 
+// Modify the element function so that the generator argument
+// is optional. If a generator is not provided, then each of
+// the elements of the array will be produced:
 
+function element(array, generator){
+	var start = 0;
+	return function(){
+		if (!generator){
+			var next = start;
+			start += 1;
+			return array[next];
+		}
+		else {
+			var index = generator();
+			if (index !== undefined){
+				return array[index];
+			}
+		}
+	};
+}
 
+var ele = element(['a','b','c','d']);
 
+console.log(ele());
+console.log(ele());
+console.log(ele());
+console.log(ele());
 
+/* Teachers solution:
+	function element(array, generator){
+		if (generator === undefined){
+			generator = fromTo(0, array.length);
+		}
+		return function(){
+			var index = generator();
+			if (index !== undefined){
+				return array[index];
+			}
+		}
+	};
+}
 
