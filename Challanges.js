@@ -187,5 +187,27 @@ console.log(index());
 console.log(index());
 console.log(index());
 
+// Write an element function that takes an array and a 
+// generator and returns a generator that will produce elements
+// from an array:
+
+function element(array, generator){
+	return function(){
+		var index = generator();
+		if (index !== undefined){
+			return array[index];
+		}
+	};
+}
+
+var ele = element(['a','b','c','d'], fromTo(1, 3));
+
+console.log(ele());
+console.log(ele());
+console.log(ele());
+
+
+
+
 
 
