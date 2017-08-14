@@ -147,23 +147,16 @@ function from(start){
 	};
 }
 var index = from(0);
-index();
-index();
-index();
+index();	// 0
+index();	// 1
+index();	// 2.. etc
 
 // Write a to function that takes a generator and an end
 // value, and returns a generator that will produce numbers 
 // up to that limit:
 
 function to(generator, endVal){
-	return function(start){
-		if (next < endVal){
-			var next = start;
-			start += 1;
-			return generator();
-		}
-	}
-	return undefined;
+	return limit(generator, endVal);
 }
 var index = to(from(0), 3);
 index();
