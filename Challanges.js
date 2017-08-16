@@ -329,7 +329,19 @@ console.log(con());
 console.log(con());
 
 
+// Write a function gensymf that makes a function that
+// generates unique symbols:
 
+function gensymf(id){
+	var start = 0;
+	return function (){
+		start += 1;
+		return String(id + start)
+	};
+}
+var genh = gensymf("H"), geng = gensymf("G");
 
-
-
+console.log(geng());
+console.log(genh());
+console.log(geng());
+console.log(genh());
