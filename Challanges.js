@@ -246,5 +246,45 @@ console.log(ele());
 			}
 		}
 	};
+} */
+
+// Write a collect function which takes a generator and an
+// array and produces a function that will collect the results
+// in the array:
+
+function collect(generator, array){
+	var start = 0;
+	return function(){
+		var next = start, index = generator();
+		if (index !== undefined){
+			array[start] = index;
+			start += 1;
+			return index;
+		}
+	};
 }
+var array = [], col = collect(fromTo(0, 2), array);
+
+console.log(col());
+console.log(col());
+console.log(col());
+console.log(array);
+
+/* Teachers solution - Used push()!!
+	function collect(generator, array){
+		return function(){
+			var val = generator();
+			if (value !== undefined){
+				array.push(value);
+			}
+			return value;
+		};
+	}
+*/
+
+
+
+
+
+
 
