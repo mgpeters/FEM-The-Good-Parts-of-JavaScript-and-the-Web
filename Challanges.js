@@ -281,10 +281,26 @@ console.log(array);
 		};
 	}
 */
+// Write a filter function that takes a generator and a 
+// predicate and produces a generator that produces only the 
+// values approved by the predicate:
 
+function filter(generator, predicate){
+	return function(){
+		var value;
+		do {
+			value = generator();
+		}
+		while (value !== undefined && !predicate(value));
+		return value;
+	};
+}
 
+var fil = filter(fromTo(0, 5), function third(value) {
+	return (value % 3) === 0;});
 
-
-
+console.log(fil());
+console.log(fil());
+console.log(fil());
 
 
