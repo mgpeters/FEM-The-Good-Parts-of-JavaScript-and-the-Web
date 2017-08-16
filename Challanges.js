@@ -303,4 +303,33 @@ console.log(fil());
 console.log(fil());
 console.log(fil());
 
+// Write a concat function that takes two generators, 
+// and produces a generator that combines the sequences:
+
+function concat(generator1, generator2){
+	return function (){
+		var gen1 = generator1();
+		if (gen1 !== undefined){
+			return gen1;
+		}
+		else{
+			var gen2 = generator2();
+			return gen2;
+		}
+	};
+}
+
+var con = concat(fromTo(0, 3), fromTo(0, 2));
+
+console.log(con());
+console.log(con());
+console.log(con());
+console.log(con());
+console.log(con());
+console.log(con());
+
+
+
+
+
 
