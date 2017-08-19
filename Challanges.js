@@ -345,3 +345,35 @@ console.log(geng());
 console.log(genh());
 console.log(geng());
 console.log(genh());
+
+// Make a function fibonaccif that returns a generator
+// that will produce the next set of Fibonacci's number:
+
+function fibonaccif(first, second){
+	var round = 0, last;
+	return function(){
+		if (round === 0){
+			round += 1;
+			return first;
+		}
+		else if (round === 1){
+			round += 1;
+			return second;
+		}
+		else {
+			last = first + second;
+			first = second;
+			second = last;
+			return last;
+		}
+	
+	};
+}
+
+var fib = fibonaccif(0, 1);
+console.log(fib());		// 0
+console.log(fib());		// 1
+console.log(fib());		// 1
+console.log(fib());		// 2
+console.log(fib());		// 3
+console.log(fib());		// 5
