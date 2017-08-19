@@ -412,9 +412,6 @@ function revocable(biFunction){
 			if (revoked === false){
 				return biFunction(a, b);
 			}
-			else {
-				return undefined;
-			}
 		},
 		revoke: function(){
 			revoked = true;
