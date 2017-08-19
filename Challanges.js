@@ -424,4 +424,19 @@ console.log(add_rev(3,4));		// 7
 rev.revoke();
 console.log(add_rev(5, 7));		// undefined
 
+// Write a function m that takes a value and an optional
+// dource string and returns them in an object:
+
+function m (value, source){
+	return {
+		value: value,
+		source: (typeof source === 'string') ? source : String(value)
+	};
+}
+
+
+
+
+
+
 
