@@ -434,9 +434,14 @@ function m (value, source){
 	};
 }
 
+// Write a function addm that takes two m objects and 
+// returns an m object:
 
-
-
+function addm(firstm, secondm){
+	return m(firstm.value + secondm.value, "(" + firstm.source + "+" + secondm.source + ")");
+}
+JSON.stringify(addm(m(3), m(4)))
+JSON.stringify(addm(m(1), m(Math.PI, "pi")))
 
 
 
