@@ -399,3 +399,32 @@ console.log(up());		// 11
 console.log(down());	// 10
 console.log(down());	// 9
 console.log(up());		// 10
+
+// Make a revocable function that takes a binary function, 
+// and returns an object containing an invoke function that can
+// invoke the finary function, and a revoke function that disables
+// the invoke function:
+
+function revocable(biFunction){
+	var revoked = false;
+	return {
+		invoke: function(a, b){
+			if (revoked === false){
+				return biFunction(a, b);
+			}
+			else {
+				return undefined;
+			}
+		},
+		revoke: function(){
+			revoked = true;
+		}
+	};
+}
+var rev = revocable(add), add_rev = rev.invoke;
+
+console.log(add_rev(3,4));		// 7
+rev.revoke();
+console.log(add_rev(5, 7));		// undefined
+
+
