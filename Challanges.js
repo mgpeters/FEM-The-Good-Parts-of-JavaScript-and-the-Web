@@ -366,7 +366,6 @@ function fibonaccif(first, second){
 			second = last;
 			return last;
 		}
-	
 	};
 }
 
@@ -377,3 +376,26 @@ console.log(fib());		// 1
 console.log(fib());		// 2
 console.log(fib());		// 3
 console.log(fib());		// 5
+
+// Write a counter function that returns an obkect
+// containing two funtions that implement an up/down counter
+// hiding the counter:
+
+function counter(input){;
+	return {
+		up: function(){
+			input += 1;
+			return input;
+		},
+		down: function(){
+			input -= 1;
+			return input;
+		}
+	}
+}
+var object = counter(10), up = object.up, down = object.down;
+
+console.log(up());		// 11
+console.log(down());	// 10
+console.log(down());	// 9
+console.log(up());		// 10
