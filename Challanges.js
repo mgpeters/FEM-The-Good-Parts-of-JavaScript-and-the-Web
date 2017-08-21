@@ -473,7 +473,23 @@ function liftm(biFunction, str){
 var addm = liftm(add, "+");
 JSON.stringify(addm(3, 4))
 
+// Write a function exp that evaluates a simple array expression:
 
+function exp (arr){
+	if (Array.isArray(arr)){
+		return arr[0](arr[1], arr[2]);
+		}
+	return arr;
+}
+var sea = [mul, 5, 11];
+console.log(exp(sea));	// 55
+console.log(exp(45));	// 45
+
+/* Shorthand notation/teachers way:
+
+	function exp(value){
+		if(Array.isArray(value)) ? value[0](value[1], value[2]) : value;
+	}
 
 
 
