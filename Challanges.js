@@ -427,7 +427,7 @@ console.log(add_rev(5, 7));		// undefined
 // Write a function m that takes a value and an optional
 // dource string and returns them in an object:
 
-function m (value, source){
+function m(value, source){
 	return {
 		value: value,
 		source: (typeof source === 'string') ? source : String(value)
@@ -443,5 +443,17 @@ function addm(firstm, secondm){
 JSON.stringify(addm(m(3), m(4)))
 JSON.stringify(addm(m(1), m(Math.PI, "pi")))
 
+// Write a function liftm that takes a binary function and
+// a string and returns a function that acts on m objects:
+
+
+function liftm(biFunction, str){
+	return function(first, second){
+			return m(biFunction(first.value, second.value), "(" + first.source + str + second.source + ")");
+	}
+}
+var addm = liftm(add, "+");
+JSON.stringify(addm(m(3), m(4)))
+JSON.stringify(liftm(mul, "*")(m(3), m(4)))
 
 
