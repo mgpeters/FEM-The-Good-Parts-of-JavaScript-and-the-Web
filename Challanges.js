@@ -507,7 +507,7 @@ console.log(exp(nae));
 // Write a function addg that adds from many invocations,
 // until it sees an empty invocation:
 
-function addg(num){
+function addg(first){
 	function more(next){
 		if (next === undefined){
 			return first;
@@ -519,6 +519,7 @@ function addg(num){
 		return more;
 	}
 }
+// retursion: a function returns itself
 
 console.log(addg());				// Undefined
 console.log(addg(2)());				// 2
@@ -526,5 +527,26 @@ console.log(addg(2)(7)());			// 9
 console.log(addg(3)(0)(4)());		// 7
 console.log(addg(1)(2)(4)(8)());	// 15
 
+// Write a function liftg that will take a binary function and apply
+// it to many invocations:
 
+function liftg(biFunction){
+	return function(next1){
+		function more(next2){
+			if (next2 === undefined){
+				return next1;
+			}
+			next1 = biFunction(next2, next1);
+			return more;
+		}
+		if(next1 !== undefined){
+			return more;
+		}
+	};
+}
+
+console.log(liftg(mul)());				// Undefined
+console.log(liftg(mul)(3)());			// 3
+console.log(liftg(mul)(3)(0)(4)());		// 0
+console.log(liftg(mul)(1)(2)(4)(8)());	// 64
 
