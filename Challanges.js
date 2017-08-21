@@ -504,7 +504,27 @@ function exp (arr){
 var nae = [Math.sqrt,[add,[square, 3],[square, 4]]];
 console.log(exp(nae));
 
+// Write a function addg that adds from many invocations,
+// until it sees an empty invocation:
 
+function addg(num){
+	function more(next){
+		if (next === undefined){
+			return first;
+		}
+		first += next;
+		return more;
+	}
+	if (first !== undefined){
+		return more;
+	}
+}
+
+console.log(addg());				// Undefined
+console.log(addg(2)());				// 2
+console.log(addg(2)(7)());			// 9
+console.log(addg(3)(0)(4)());		// 7
+console.log(addg(1)(2)(4)(8)());	// 15
 
 
 
