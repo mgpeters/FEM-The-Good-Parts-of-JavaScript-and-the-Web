@@ -456,4 +456,25 @@ var addm = liftm(add, "+");
 JSON.stringify(addm(m(3), m(4)))
 JSON.stringify(liftm(mul, "*")(m(3), m(4)))
 
+// Modify the function liftm so that the functions it produces
+// can accept arguments that are either numbers or m objects:
+
+function liftm(biFunction, str){
+	return function(first, second){
+		if (typeof first === 'number'){
+			first= m(first);
+		}
+		if (typeof second === 'number'){
+			second = m(second);
+		}
+		return m(biFunction(first.value, second.value), "(" + first.source + str + second.source + ")");	
+	};
+}
+var addm = liftm(add, "+");
+JSON.stringify(addm(3, 4))
+
+
+
+
+
 
