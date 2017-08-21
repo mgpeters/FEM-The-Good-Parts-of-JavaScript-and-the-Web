@@ -490,6 +490,20 @@ console.log(exp(45));	// 45
 	function exp(value){
 		if(Array.isArray(value)) ? value[0](value[1], value[2]) : value;
 	}
+*/
+
+// Modify exp to evaluate nested array expressions:
+
+function exp (arr){
+	if (Array.isArray(arr)){
+		return arr[0](exp(arr[1]), exp(arr[2]));
+		}
+	return arr;
+}
+
+var nae = [Math.sqrt,[add,[square, 3],[square, 4]]];
+console.log(exp(nae));
+
 
 
 
