@@ -591,4 +591,17 @@ function arrayg(first){
 	}
 	return more(first);
 }
+*/
+
+// Make a function continuize that takes a unary function, 
+// and returns a function that taks a callback and an
+// argument:
+
+function continuize(unary){
+	return function(callback, arg){
+		return callback(unary(arg));
+	};
+}
+sqrtc = continuize(Math.sqrt);
+sqrtc(alert, 81);	// 9 on an ALERT!!
 
