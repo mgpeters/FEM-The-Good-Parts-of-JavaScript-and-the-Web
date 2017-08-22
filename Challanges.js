@@ -496,7 +496,7 @@ console.log(exp(45));	// 45
 
 function exp (arr){
 	if (Array.isArray(arr)){
-		return arr[0](exp(arr[1]), exp(arr[2]));
+		return arr[0](exp(arr[1]), exp(arr[2])); //Recursion, when a funciton calls itself.
 		}
 	return arr;
 }
@@ -549,4 +549,46 @@ console.log(liftg(mul)());				// Undefined
 console.log(liftg(mul)(3)());			// 3
 console.log(liftg(mul)(3)(0)(4)());		// 0
 console.log(liftg(mul)(1)(2)(4)(8)());	// 64
+
+
+// Write a function arrayg that will build an array from
+// many invocations:
+
+function arrayg(first){
+	var counter = 1, arr = [];
+	function more(next){
+		arr[0] = first;
+		if (next === undefined){
+			return arr;
+		}
+		arr[counter] = next;
+		counter += 1;
+		return more;
+	}
+	if (first === undefined){
+		return arr;
+	}
+	if (first !== undefined){
+		return more;
+	}
+}
+
+console.log(arrayg());			// []
+console.log(arrayg(3)());		// [3]
+console.log(arrayg(3)(4)(5)());	// [3, 4, 5]
+console.log(arrayg(3)(4)(5)(60)(2000)());
+
+/* Teachers solution:
+	
+function arrayg(first){
+	var arr = [];
+	function more(next){
+		if (next === undefined){
+			return arr;
+		}
+		arr.push(next)
+		return more;
+	}
+	return more(first);
+}
 
