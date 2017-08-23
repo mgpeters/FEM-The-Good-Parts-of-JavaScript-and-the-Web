@@ -605,3 +605,23 @@ function continuize(unary){
 sqrtc = continuize(Math.sqrt);
 sqrtc(alert, 81);	// 9 on an ALERT!!
 
+// Make an array wrapper object with methods get, store, and
+// append, such that an attacker cannot get access to the private
+// array:
+
+function vector(){
+	var array = [];
+
+	return {
+		get: function get(i){
+			return array[i];
+		},
+		store: function store(i, v){
+			array[i] = v;
+		},
+		append: function append(v){
+			array.push(v);
+		}
+	};
+}
+
