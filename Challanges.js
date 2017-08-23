@@ -624,4 +624,16 @@ function vector(){
 		}
 	};
 }
+/* You can attack/return the array inside this function by:
+
+	var stash; **Global
+	myvector.store('push', function(){stash = this});
+	myvector.append; // stash is now array
+
+This works because Javascript arrays are not traditional Array's,
+they are actually objects spoofed to be array's, as array's were not
+an initial deature of the language
+
+*/
+
 
