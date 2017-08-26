@@ -661,7 +661,7 @@ function vector(){
 function pubsub(){
 	var subscribers = [];
 
-	return {
+	return Object.freeze {	//Object.freeze will make the object's properties (ie enumeration) unable to be tampered with.
 		publish: function (publish){
 			var i, length = subscribers.length;
 			for(i = 0; i < length; i += 1){
