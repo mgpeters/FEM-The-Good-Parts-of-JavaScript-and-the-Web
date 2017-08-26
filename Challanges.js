@@ -661,14 +661,15 @@ function vector(){
 function pubsub(){
 	var subscribers = [];
 
-	return Object.freeze {	//Object.freeze will make the object's properties (ie enumeration) unable to be tampered with.
+	return Object.freeze {	//Object.freeze will make the object's properties (ie enumeration) unable to be tampered with the instance!
 		publish: function (publish){
 			var i, length = subscribers.length;
-			for(i = 0; i < length; i += 1){
-				try{					// Try/catch looks for errors, if one is present, it ignores and moves on.
-				subscribers[i](publish)
-				} catch (ignore){}	//a failsafe for undefined "user"s
-			}
+			subscribers.forEach(function (s){	//forEach will ignore exceptions in this case.
+				setTimeout(function(){
+					s(publication);
+				}, 0)
+				}	//a failsafe for undefined "user"s
+			});
 		},
 		subscribe: function (user){
 			subscribers.push(user);
