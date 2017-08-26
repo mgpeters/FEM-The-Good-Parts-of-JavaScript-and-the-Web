@@ -624,6 +624,7 @@ function vector(){
 		}
 	};
 }
+
 /* You can attack/return the array inside this function by:
 
 	var stash; **Global
@@ -634,6 +635,44 @@ This works because Javascript arrays are not traditional Array's,
 they are actually objects spoofed to be array's, as array's were not
 an initial deature of the language
 
+The fix for this is to force i to a number by adding a plus +i:
 */
 
+function vector(){
+	var array = [];
+
+	return {
+		get: function get(i){
+			return array[+i];
+		},
+		store: function store(i, v){
+			array[+i] = v;
+		},
+		append: function append(v){
+			array[array.length] = v;
+		}
+	};
+}
+
+// Make a function that makes a publish/subscribe object. It 
+// will reliably deliver all publications to all subscribers
+// in the right order:
+
+function pubsub(){
+	var subscribers = [];
+
+	return {
+		publish: function (publish){
+			var i, length = subscribers.length;
+			for(i = 0; i < length; i += 1){
+				try{					// Try/catch looks for errors, if one is present, it ignores and moves on.
+				subscribers[i](publish)
+				} catch (ignore){}	//a failsafe for undefined "user"s
+			}
+		},
+		subscribe: function (user){
+			subscribers.push(user);
+		}
+	};
+}
 
