@@ -667,8 +667,7 @@ function pubsub(){
 			subscribers.forEach(function (s){	//forEach will ignore exceptions in this case.
 				setTimeout(function(){
 					s(publication);
-				}, 0)
-				}	//a failsafe for undefined "user"s
+				}, 0);	//a failsafe for undefined "user"s
 			});
 		},
 		subscribe: function (user){
